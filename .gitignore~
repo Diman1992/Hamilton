@@ -2,7 +2,7 @@
 *.aux
 *.out
 *.backup
-*.orig
+*.tex
 *.log
 *.swp
 
