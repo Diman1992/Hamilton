@@ -47,10 +47,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{xfrac}
-\usepackage{booktabs}
-\newcommand {\rot} {\; \mathrm{rot} \,}         % Rotation
-\newcommand {\grad} {\; \mathrm{grad} \,}       % Gradient
-\newcommand {\dive} {\; \mathrm{div} \,}        % Divergenz
+\usepackage{booktabs}
+
+\newcommand {\rot} {\; \mathrm{rot} \,}         % Rotation
+
+\newcommand {\grad} {\; \mathrm{grad} \,}       % Gradient
+
+\newcommand {\dive} {\; \mathrm{div} \,}        % Divergenz
+
 \newcommand {\dx} {\; \mathrm{d} }              % Differential d
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -108,11 +112,124 @@ Technische Universit\"at Dortmund}
 \tableofcontents
 \end{frame} 
 
-\newcommand{\tmotiv}{Grundlagen}
-\section{\tmotiv}
-\begin{frame} 
 
- \end{frame}
+\section{Grundlagen}
+\subsection{Lagrangeformalismus}
+
+\begin{frame} 
+\frametitle{Lagrangeformalismus}
+\begin{itemize}
+\item \textbf{Generalisierte Koordinaten} $q_k(t)$, $k = 1\dots f$\begin{itemize}
+\item $f$: Anzahl Freiheitsgrade
+\item Beschreiben System vollständig
+\end{itemize}
+\item \textbf{Kinetische Energie} $T(q_k,\dot{q}_k) = \sum\limits_i^N \frac{1}{2}m_i \dot{\vec{r}}_i^2$
+\item \textbf{Potentielle Energie} $U(q_k,t) = - \sum\limits_{i=1}^N \int \vec{F}_i d\vec{r}_i$
+\item \textbf{Lagrange-Funktion}
+$L(q_k,\dot{q}_k,t) = T(q_k,\dot{q}_k) - U(q_k,t)$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame} 
+\frametitle{Lagrangeformalismus}
+
+Prinzip der extremalen Wirkung:
+\begin{equation*}
+\delta S = \delta \int_{t_0}^{t_1} L(q_k,\dot{q}_k,t) dt =0
+\end{equation*} 
+$\Rightarrow$ Euler-Lagrange-Gleichung (Bewegungsgleichungen)
+\begin{equation*}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_k}\right) - \frac{\partial L}{\partial q_k} = 0
+\end{equation*} 
+\end{frame}
+
+
+\subsection{Hamiltonformalismus}
+\begin{frame} 
+\frametitle{Hamiltonformalismus}
+\begin{itemize}
+\item \textbf{Hamiltonfunktion} $H = \sum\limits_k p_q \dot{q}_k - L(q_k,\dot{q}_k,t)$
+\begin{itemize}
+\item \textbf{Kanonisch konjugierte Impulse} $p_k = \frac{\partial L}{\partial \dot{q}_k}$
+\item $\Rightarrow\; H = H(p_k,q_k,t)$
+\end{itemize}
+\end{itemize}
+\pause
+Bewegungsgleichungen: 
+\begin{equation*}
+\dot{q}_k = \frac{\partial H}{\partial p_k}, \quad\dot{p}_k = - \frac{\partial H}{\partial q_k}, \quad\frac{dH}{dt} = \frac{\partial H}{\partial t}
+\end{equation*}
+\end{frame}
+\subsection*{Kanonische Transformationen}
+\begin{frame}
+\frametitle{Kanonische Transformationen}
+Transformation $q,p,H\rightarrow Q,P,\mathcal{H}$\pause
+\begin{itemize}
+\item \textbf{kanonisch}, falls
+$\dot{Q} = \frac{\partial\mathcal{H}}{\partial P}$, $\dot{P} = - \frac{\partial \mathcal{H}}{\partial Q}$
+\end{itemize}
+\begin{equation*}
+\delta \int\limits_{t_0}^{t_1} L(q,p) dt = \delta \int\limits_{t_0}^{t_1} \mathcal{L}(Q,P) dt = 0
+\end{equation*}
+mit $\mathcal{L} = P\dot{Q}-\mathcal{H}(Q,P,t)$\\
+\vspace*{1cm}\pause
+Es folgt
+\begin{equation*}
+L = \mathcal{L} + \frac{dF}{dt}
+\end{equation*}
+mit $F = F(q,p,Q,P)$ der \textbf{erzeugenden Funktion}
+\end{frame}
+\begin{frame}
+\frametitle{Kanonische Transformationen}
+Folgende Erzeugende sind besonders einfach:\\
+\begin{center}
+\begin{tabular}{c|c}
+Erzeugende $F$ & Transformation \\ 
+\hline 
+$F_1(q,Q,t)$ & $p = \frac{\partial F_1}{\partial_q}$, $P = - \frac{\partial F_1}{\partial Q}$, $\mathcal{H} = H + \frac{\partial F_1}{\partial t}$ \\ 
+$F_2(q,P,t)-QP$ & $p = \frac{\partial F_2}{\partial q}$, $Q = \frac{\partial F_2}{\partial P}$, $\mathcal{H} = H + \frac{\partial F_2}{\partial t}$ \\ 
+$F_3(p,Q,t)+qp$ & $q = - \frac{\partial F_3}{\partial p}$, $P = - \frac{\partial F_3}{\partial Q}$, $\mathcal{H} = H + \frac{\partial F_3}{\partial t}$ \\ 
+$F_4(p,P,t)+pq-PQ$ & $q = -\frac{\partial F_4}{\partial p}$, $Q = - \frac{\partial F_4}{\partial P}$, $\mathcal{H} = H + \frac{\partial F_4}{\partial t}$ 
+\end{tabular} 
+\end{center}
+Beispiel: $F_2$
+\end{frame}
+
+
+\subsection*{Unabhängige Variable}
+\begin{frame}
+\frametitle{Unabhängige Variable}
+Bisher $t$ als unabhängige Variable.\\ Wegen
+\begin{equation*}
+\delta \int\limits_{t_0}^{t_1} L dt = \delta \int\limits_{t_0}^{t_1}\left(\sum\limits_{k=1}^n p_k dq_k - H dt\right) = 0
+\end{equation*}
+definiere $q_0 = t$, $p_0 = -H$
+
+\begin{equation*}
+\Rightarrow \quad \delta \int\limits_{t_0}^{t_1}\sum\limits_{k=0}^n p_k dq_k  = 0
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Unabhängige Variable}
+
+\begin{equation*}
+\delta \int\limits_{t_0}^{t_1}\sum\limits_{k=0}^n p_k dq_k  = 0
+\end{equation*}
+Wähle neue unabhängige Koordinate! 
+z.B. $s=q_n$  und  $\mathcal{H}= -p_n$\\\pause
+Man erhält $\mathcal{H}$ durch auflösen
+\begin{gather*}
+p_0 = -H(q_1\dots q_n,p_1\dots p_n,t = q_0)\\ \Leftrightarrow -p_n = \mathcal{H}(q_0\dots q_{n-1},p_0\dots p_{n-1}, q_n = s)
+\end{gather*}\pause
+Bewegungsgleichungen:
+\begin{equation*}
+q_i^\prime = \frac{dq_i}{ds} = \frac{\partial \mathcal{H}}{\partial p_i};\; p_i^\prime = \frac{dp_i}{ds} = - \frac{\partial \mathcal{H}}{\partial q_i};\; i = 0\dots n-1
+\end{equation*}
+\end{frame}
+
 
 
 \section{Geladene Teilchen im EM-Feld}
@@ -226,25 +343,213 @@ bild malen
  \frametitle{kleine Impulsabweichungen zum Sollimpuls}
 \end{frame}
 
-\section{Transformation auf Wirkungs-Winkel-Variable}
-\subsection{Bedeutng der Wirkungs-Winkel-Variablen}
+\section{Transformation auf Wirkungs-Winkel-Variablen}
 \begin{frame}
- \frametitle{Bedeutende Größen}
+\frametitle{Wirkungs-Winkel-Variablen}
+Bewegung periodisch in den kanonisch konjugierten Variablen $p,q$\\
+$\Rightarrow$\textbf{ Wirkungs-Variable} $J = \oint p dq = const$\\
+\vspace*{.7cm}\pause
+Transformation, so dass $J$ Impulsvariable ist \begin{itemize}\item Gut für Störungsrechnungen  \item Für adiabatische Änderungen eines Parameters $\lambda$
+\begin{equation*}
+\frac{d\lambda }{dt} \ll \frac{\lambda}{T_0},\; T_0\text{: Periodendauer}
+\end{equation*}
+bleibt $J$ erhalten
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Wirkungs-Winkel-Variablen}
+Erinnerung Betatron-Bewegung:
+\begin{equation*}
+x(s) = a \sqrt{\beta(s)} \cos (\phi(s) + \phi_0)
+\end{equation*}
+\pause
+Trafo $x,p_x\rightarrow \phi,J$:
+\begin{equation*}
+F_1(x,\phi,s) = -\frac{x^2}{2\beta(s)}\left[ \tan \phi - \frac{1}{2}\beta^\prime(s)\right]
+\end{equation*}\pause
+\begin{gather*}\Rightarrow p_x = x^\prime = \frac{\partial F_1}{\partial x} = -\frac{x}{\beta}\left[\tan \phi - \frac{\beta^\prime}{2}\right]\\
+J = - \frac{\partial F_1}{\partial \phi} = \frac{x^2}{2\beta\cos^2\psi}
+\end{gather*}
 \end{frame}
 
-\subsection{Beispiele}
 \begin{frame}
- \frametitle{Beispiel: Gradientenfehler}
+\frametitle{Wirkungs-Winkel-Variablen}
+Resultat dieser Trafo:
+\begin{gather*}
+J = \frac{1}{2\pi} \oint p_x dx= \frac{a^2}{2} = \frac{\varepsilon}{2}\\
+H_{WW} = H_0 + \frac{\partial F_1}{\partial s} =  \frac{J}{\beta(s)}\\
+\phi^\prime = \frac{\partial H_{WW}}{\partial J} = \frac{1}{\beta(s)} \Rightarrow \phi(s) = \int\limits_{0}^s \frac{ds^\prime}{\beta(s^\prime)} + \phi_0
+\end{gather*}
 \end{frame}
 
+
+\subsection{Gradientenfehler}
 \begin{frame}
- \frametitle{Beispiel: Sextupol}
+\frametitle{Beispiel: Gradientenfehler}
+
+Erinnerung: Zerlegung des Magnetfeldes
+\begin{equation*}
+\frac{e}{p}B_y = \frac{e}{p}B_{y,0} + \frac{e}{p}\frac{\partial B_y}{\partial x} + \frac{e}{p}\frac{1}{2}\frac{\partial^2 B_y}{\partial x^2} + \dots = \frac{1}{R} - kx + \frac{1}{2} mx^2 + \dots
+\end{equation*}
+\pause
+
+\vspace*{.6cm}
+Habe nun das Quadrupolfeld einen Fehler $\Delta k$:
+\begin{equation*}
+H_{WW}(\phi,J,s) = \frac{J}{\beta(s)} - \frac{1}{2}\Delta k(s) x^2
+\end{equation*}
+
+\end{frame}
+\begin{frame}
+\frametitle{Beispiel: Gradientenfehler}
+\begin{equation*}
+H_{WW}(\phi,J,s) = \frac{J}{\beta(s)} - \frac{1}{2}\Delta k(s) x^2
+\end{equation*}
+Anzahl der Betatronschwingungen pro Umlauf:
+\begin{equation*}
+Q = \frac{1}{2\pi}\oint d\phi = \frac{1}{2\pi} \oint \frac{d\phi}{ds} ds
+\end{equation*}
+mit $\frac{d\phi}{ds} = \frac{\partial H_{WW}}{\partial J} = \frac{1}{\beta} - \frac{\beta}{2}\Delta k (1+\cos 2\phi)$
+\pause
+\begin{equation*}
+Q = \underbrace{\frac{1}{2}\oint \frac{ds}{\beta(s)}}_{Q_0} - \frac{1}{4}\oint \beta(s) \Delta k ds - \underbrace{\frac{1}{4\pi}\oint\beta(s) \Delta k(s) \cos 2\phi ds}_{ = 0\text{, falls } Q_0 \neq \frac{n}{2}}
+\end{equation*}
+\end{frame}
+
+
+
+\subsection{Sextupole}
+\begin{frame}
+\frametitle{Beispiel: Sextupol}
+\begin{itemize}
+\item Sextupolterm Magnetfeld: $\frac{e}{p} B_y = \frac{1}{2}m x^2$
+\item Potential: $\vec{B} = \text{rot}\, \vec{A}$
+\end{itemize}
+\pause
+\begin{align*}
+H_{WW}(\phi,J,s) &= \frac{J}{\beta(s)} - \frac{e}{p}A= \frac{J}{\beta(s)} + \frac{m}{6}x^3 \\ &= \frac{J}{\beta(s)} + \frac{m}{24}(2J\beta)^{3/2}\left(\cos 3\phi + 3\cos \phi\right)
+\end{align*}
+\pause
+Analoge Rechnung
+\begin{equation*}
+Q = \frac{1}{2} \int \frac{\partial H_{WW}}{ds} ds =  Q_0
+\end{equation*}
+für $Q_0 \neq \pm n,\pm \frac{n}{3}$.
+\vspace*{.5cm}
+\pause
+\begin{itemize}
+\item kein Tune Shift durch Sextupol
+\end{itemize}
 \end{frame}
 
 \section{Resonanzen}
+\subsection{Sextupol}
 \begin{frame}
- \frametitle{Beispiel: Sextupol}
+\frametitle{Sextupol-Resonanzen}
+\begin{itemize}
+\item Was, wenn doch $Q = \pm n,\pm \frac{n}{3}$ gilt?
+\item $\Rightarrow$ Wechsel in Koordinaten, in denen der ungestörte Hamiltonian $H_{WW} = \frac{J}{\beta(s)}$ nicht mehr von $s$ abhängt!
+\end{itemize}
+\pause
+\begin{equation*}
+\tilde{\phi} = \phi - \int\limits_0^s \frac{ds^\prime}{\beta(s^\prime)} + \frac{Q}{R}s = \phi_0 + \frac{Q}{R}s
+\end{equation*}
+mit $R$: mittlere Radius des Rings.
+\vspace*{.2cm}
+\pause
+\begin{equation*}
+\Rightarrow \tilde{J} = J \quad \text{ und }\quad \tilde{H}_{WW}(\tilde{\phi},J,s) = \frac{Q}{R}J
+\end{equation*}
 \end{frame}
+
+\begin{frame}
+\frametitle{Sextupol-Resonanzen}
+Gleichzeitig Zerlegung Betatron-Phase in umlaufperiodischen und nicht umlaufperiodischen Teil:
+\begin{equation*}
+\phi = \tilde{\phi} + \int\limits_0^s \frac{ds^\prime}{\beta(s^\prime)} - \frac{Q}{R}s = \tilde{\phi} + \tau(s)
+\end{equation*}
+\pause
+\vspace*{.4cm}
+\begin{align*}
+\tilde{H}_{WW} &= \frac{Q}{R} J + \frac{m}{24}(2J\beta(s))^{3/2} \left[3\cos\tilde{\phi}\cos\tau - 3 \sin\tilde{\phi}\sin\tau\right.\\&\hspace*{4cm}\left. + \cos 3\tilde{\phi}\cos3\tau - \sin 3\tilde{\phi}\sin 3\tau\right]
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sextupol-Resonanzen}
+Fourierentwicklung in Azimuthalwinkel $\theta = \frac{s}{R}$
+\begin{itemize}
+\item Resonanz, wenn Teilchenbewegung und Störstellen gemeinsame Fourierkomponenten haben!
+\end{itemize}
+\pause
+\vspace*{2mm}
+\begin{align*}
+\tilde{H}_{WW}(\tilde{\phi},J,s) = &\frac{Q}{R}J + \frac{(2J)^{3/2}}{24} \sum\limits_{n=-\infty}^\infty \left[ 3 A_n \cos(n\theta + \tilde{\phi}) + 3 B_n \sin(n\theta - \tilde{\phi})\right.\\&\hspace*{3cm}\left. + C_n \cos(n\theta + 3\tilde{\phi}) + D_n \sin(n\theta - 3\tilde{\phi})\right]
+\end{align*}
+\vspace*{-2mm}
+\pause
+\small{
+\begin{align*}
+A_n &= \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \cos(\tau -n\theta) ds, \quad B_n = \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \sin(\tau +n\theta) ds\\
+C_n &= \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \cos(3\tau -n\theta) ds, \quad D_n = \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \sin(3\tau +n\theta) ds\\
+\end{align*}}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Sextupol-Resonanzen}
+\begin{equation*}
+\tilde{\phi} = \phi_0 + Q\theta
+\end{equation*}
+
+Ganzzahlige Resonanzen 
+\begin{equation*}
+n\theta \pm \tilde{\phi} = n\theta \pm Q\theta \pm \phi_0 \quad \Leftrightarrow \quad Q = \pm n
+\end{equation*}
+\begin{flushright}
+Dipolfehler!
+\end{flushright}
+
+
+Drittelzahlige Resonanzen
+\begin{equation*}
+n\theta \pm 3\tilde{\phi} = (n\pm 3Q) \theta \pm 3\tilde{\phi}\quad \Leftrightarrow \quad Q = \pm \frac{n}{3}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sextupol-Resonanzen}
+Bestimmung  $C_n$ und $D_n$
+\begin{itemize}
+\item $Q = \pm \frac{n}{3}\quad$
+\item Resubstitution von $\tau = \int\limits_0^s\frac{ds^\prime}{\beta(s^\prime)}-Q\theta = \phi(s) - Q\theta$
+\end{itemize}\pause
+\begin{align*}
+\Rightarrow \quad C &= \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \cos3\phi(s) ds\\
+D &= \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \sin3\phi(s) ds\\
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Sextupol-Resonanzen}
+\begin{equation*}
+C = \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \cos3\phi(s) ds,\quad D = \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \sin3\phi(s) ds
+\end{equation*}
+\begin{itemize}
+\item Tastet $m(s)$ mit $cos 3\phi$ und $\sin 3\phi$ ab (dreifachen Betatronphase)
+\item Gewichtet mit $\beta^{3/2}(s)$
+\item $\Rightarrow$ $C$ und $D$ für alle $n$.
+\end{itemize}
+\pause
+Große Resonanzen für gleichartige Sextupole im Abstand $120^\circ$.\\\pause
+Drittelresonanz verschwindet für Sextupole gleicher Stärke und entgegengesetzter Polarität in Abstand von $60^\circ$.
+\end{frame}
+
+
+
+
+
 
 \begin{frame}
  \frametitle{Verhalten in Resonanznähe}
@@ -271,147 +576,3 @@ bild malen
 
 
 \end{document}
-=======
-
-\documentclass[hyperref={pdfpagelabels=false}]{beamer}
-% Die Hyperref Option hyperref={pdfpagelabels=false} verhindert die Warnung:
-% Package hyperref Warning: Option `pdfpagelabels' is turned off
-% (hyperref)                because \thepage is undefined. 
-% Hyperref stopped early 
-%
-% \input{longheader.tex}
-% \input{global.tex}
-
-\usepackage{lmodern}
-% Das Paket lmodern erspart die folgenden Warnungen:
-% LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-% (Font)              size <5> substituted on input line 22.
-% LaTeX Font Warning: Size substitutions with differences
-% (Font)              up to 1.0pt have occurred.
-%
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\usepackage{siunitx}
-\sisetup{load-configurations=abbreviations}
-\sisetup{
-	%locale=DE,
-	seperr=true,                    % Fehler anzeigen
-	tightpm,                        % Abstand zwischen Fehler verringern
-	tophrase={{\text{ bis }}},
-	fraction=nice,
-	per-mode=fraction,
-	free-standing-units=true,
-	space-before-unit=true,
-	use-xspace=true,
-	group-separator={{\text{~}}},
-	list-final-separator={{\text{ und }}}
-}
-\usepackage{natbib}
-\usepackage[labelformat=empty]{caption}
-\usepackage{movie15}
-\usepackage{xcolor,colortbl}
-\usepackage{slashed}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amscd}
-\usepackage{amstext}
-\usepackage{amsthm}
-\usepackage[ngerman,german]{babel, varioref}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{xfrac}
-\usepackage{booktabs}
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% Wenn \titel{\ldots} \author{\ldots} erst nach \begin{document} kommen,
-% kommt folgende Warnung:
-% Package hyperref Warning: Option `pdfauthor' has already been used,
-% (hyperref) ... 
-% Daher steht es hier vor \begin{document}
-
-\title[Hamiltonformalismus]{Hamiltonformalismus in der Beschleunigerphysik}  
-\institute{Beschleunigerphysik I \& II\\
-Technische Universit\"at Dortmund}
-\author{Dimitrios Skodras \and Sonja Bartkowski} 
-\date{11.06.2015} 
-
-% zusaetzlich ist das usepackage{beamerthemeshadow} eingebunden 
-\usepackage{beamerthemeshadow}
-\usepackage{amsmath}
-
-
-%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
-%  sorgt dafuer das die Elemente die erst noch (zukuenftig) kommen 
-%  nur schwach angedeutet erscheinen 
-\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
-% klappt auch bei Tabellen, wenn teTeX verwendet wird\ldots
-
-\beamertemplatenavigationsymbolsempty
-
-\begin{document}
-
-\setbeamertemplate{footline}
-{%
-  \leavevmode%
- \begin{beamercolorbox}%
-    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]%
-    {author in head/foot}%
-    \usebeamerfont{author in head/foot}%
-    \hfill\insertshortauthor
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}%
-    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm ,rightskip=.3cm]%
-    {title in head/foot}%
-    \usebeamerfont{title in head/foot}%
-    \insertshorttitle\hfill\insertframenumber{}
-  \end{beamercolorbox}%
-}%
-
-\setbeamertemplate{caption}{\raggedright\insertcaption\par}
-\captionsetup[figure]{font=small,skip=0pt}
-\begin{frame}
-\titlepage
-\end{frame} 
-
-\begin{frame}
-\frametitle{Gliederung}
-\tableofcontents
-\end{frame} 
-
-
-\section{Grundlagen}
- \begin{frame}
-   \frametitle{Sonjas Teil}
-   \pause
- \end{frame}
- 
-
-\section{Hamilton-Funktion für geladenen Teilchen im EM-Feld}
-\begin{frame}
-\frametitle{Dimitris Teil}
-\tableofcontents[currentsection]
-\end{frame}
-\subsection{Gibt es hier Unterkapitel}
- 
-
-\section{Transformation auf Wirkungs-Winkel-Variable}
-\begin{frame}
-\frametitle{Sonjas Teil}
-\tableofcontents[currentsection]
-\end{frame}
-
-\section{Kanonische Störungsrechnung}
-\begin{frame}
-\tableofcontents[currentsection]
-\end{frame}
-\subsection{Sextupol}
-\begin{frame}
-\frametitle{Sextupol - Sonjas Teil}
-\end{frame}
-\subsection*{Rest - Dimitris Teil?}
-\begin{frame}
-\frametitle{Rest - Dimitris Teil?}
- \framesubtitle{Motivation}
-\end{frame}
-\end{document}
->>>>>>> fb1dc7e1283ceaffe2a0f14f4c81cdfe63ef3826
