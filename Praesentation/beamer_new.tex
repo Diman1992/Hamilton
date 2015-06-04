@@ -1,0 +1,417 @@
+
+
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+% Die Hyperref Option hyperref={pdfpagelabels=false} verhindert die Warnung:
+% Package hyperref Warning: Option `pdfpagelabels' is turned off
+% (hyperref)                because \thepage is undefined. 
+% Hyperref stopped early 
+%
+% \input{longheader.tex}
+ %\input{global.tex}
+
+\usepackage{lmodern}
+% Das Paket lmodern erspart die folgenden Warnungen:
+% LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
+% (Font)              size <5> substituted on input line 22.
+% LaTeX Font Warning: Size substitutions with differences
+% (Font)              up to 1.0pt have occurred.
+%
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\usepackage{siunitx}
+\sisetup{load-configurations=abbreviations}
+\sisetup{
+	%locale=DE,
+	seperr=true,                    % Fehler anzeigen
+	tightpm,                        % Abstand zwischen Fehler verringern
+	tophrase={{\text{ bis }}},
+	fraction=nice,
+	per-mode=fraction,
+	free-standing-units=true,
+	space-before-unit=true,
+	use-xspace=true,
+	group-separator={{\text{~}}},
+	list-final-separator={{\text{ und }}}
+}
+\usepackage{natbib}
+\usepackage[labelformat=empty]{caption}
+\usepackage{movie15}
+\usepackage{xcolor,colortbl}
+\usepackage{slashed}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amstext}
+\usepackage[ngerman,german]{babel, varioref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xfrac}
+\usepackage{booktabs}
+\newcommand {\rot} {\; \mathrm{rot} \,}         % Rotation
+\newcommand {\grad} {\; \mathrm{grad} \,}       % Gradient
+\newcommand {\dive} {\; \mathrm{div} \,}        % Divergenz
+\newcommand {\dx} {\; \mathrm{d} }              % Differential d
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Wenn \titel{\ldots} \author{\ldots} erst nach \begin{document} kommen,
+% kommt folgende Warnung:
+% Package hyperref Warning: Option `pdfauthor' has already been used,
+% (hyperref) ... 
+% Daher steht es hier vor \begin{document}
+
+\title{Hamilton-Formalismus in der Beschleunigerphysik}  
+\institute{
+Technische Universit\"at Dortmund}
+\author{Sonja Bartkowski, Dimitrios Skodras} 
+\date{11.06.2015} 
+
+% zusaetzlich ist das usepackage{beamerthemeshadow} eingebunden 
+\usepackage{beamerthemeshadow}
+
+
+%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+%  sorgt dafuer das die Elemente die erst noch (zukuenftig) kommen 
+%  nur schwach angedeutet erscheinen 
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% klappt auch bei Tabellen, wenn teTeX verwendet wird\ldots
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+ \begin{beamercolorbox}%
+    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]%
+    {author in head/foot}%
+    \usebeamerfont{author in head/foot}%
+    \hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}%
+    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm ,rightskip=.3cm]%
+    {title in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \insertshorttitle\hfill\insertframenumber{}
+  \end{beamercolorbox}%
+}%
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\captionsetup[figure]{font=small,skip=0pt}
+\begin{frame}
+\titlepage
+\end{frame} 
+
+\begin{frame}
+\frametitle{Gliederung}
+\tableofcontents
+\end{frame} 
+
+\newcommand{\tmotiv}{Grundlagen}
+\section{\tmotiv}
+\begin{frame} 
+
+ \end{frame}
+
+
+\section{Geladene Teilchen im EM-Feld}
+\begin{frame}
+ \frametitle{Hamiltonfunktion}
+ \pause
+ Elektromagnetische Potenziale:
+ \begin{align*}
+  \dive\, \mathbf{ B} &= 0 \rightarrow \mathbf{B} = \rot\, \mathbf{A}\\
+  \rot\,\mathbf{ E}  &= -\dot {\mathbf{B}} = -\rot\, \frac{\partial\mathbf{A}}{\partial t} \rightarrow \mathbf{E} = -\grad\,\phi - \frac{\partial\mathbf{A}}{\partial t×}
+ \end{align*}
+ 
+ Aus Euler-Lagrange-Gleichung für die Lorentzkraft: 
+ \begin{align*}
+   \mathbf{F} &= e(\mathbf{E} + \dot {q}\times \mathbf{B}) = \frac{\dx}{\dx t} \frac{\partial U}{\partial \dot {q}} - \frac{\partial U}{\partial q}\\
+   U &= e(\phi - \dot{q}\cdot\mathbf{A})
+ \end{align*}
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Hamiltonfunktion}
+ \pause
+ Lagrangefunktion:
+ \begin{align*}
+  L = T-U = \frac12 m \dot{q}^2 + e\dot{q}\cdot\mathbf{A} - e\phi
+ \end{align*}
+ Legendretransformation:
+ \begin{align*}
+  \underbrace{\mathbf{p}}_{kan.} &= \underbrace{m\mathbf{v}}_{mech.} + e\mathbf{A}\\
+  H &= \mathbf{p}\dot{q} - L = (m\mathbf{v}+e\mathbf{A})\cdot \mathbf{v} - \frac12 m \mathbf{v}^2 - e \mathbf{v}\cdot\mathbf{A} + e\phi \\
+  &= \frac12m\mathbf{v}^2 + e\phi
+ \end{align*}
+\end{frame}
+
+
+\subsection{Relativistik}
+ \begin{frame}
+    \frametitle{Relativistische Erweiterung}
+    \pause
+  Ohne Feld:
+  \begin{align*}
+    H = \sqrt{\mathbf{p}^2_{\text{mech}}c^2 + m^2c^4},    \qquad \mathbf{p}_{\text{mech}} = \gamma m\mathbf{v}
+  \end{align*}
+  Mit Feld:
+  \begin{align*}
+   H = \sqrt{(\mathbf{p}_{\text{kan}}-e\mathbf{A})^2c^2 + m^2c^4}+e\phi
+  \end{align*}
+  Relativistische Lagrangefunktion:
+  \begin{align*}
+   L = -\frac{mc^2}{\gamma} + e \mathbf{A}\cdot\mathbf{v}-e\phi \neq T-U
+  \end{align*}
+
+ \end{frame}
+
+
+\subsection{Transformation ins mitbewegete System}
+\begin{frame}
+\frametitle{Transformation ins mitbewegete System}
+\pause
+Neue Koordinaten $(Q_1,Q_2,Q_3) = (x,y,s)$ bzgl. Sollbahn $r_0(s)$:
+\begin{align*}
+ \mathbf{r}(s) = \rho\mathbf{e}_x(s) + x\mathbf{e}_x(s) + y\mathbf{e}_y(s) \qquad \rho = \text{Krümmungsradius}
+\end{align*}
+bild malen
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Transformation ins mitbewegete System}
+ \pause
+ Frenet-Gleichungen (Torsion $\tau=0$):
+ \begin{align*}
+  \frac{\dx \mathbf{e}_s}{\dx s} = -\frac{1}{\rho}\mathbf{e}_x;\quad\frac{\dx \mathbf{e}_x}{\dx s} = \frac{1}{\rho}\mathbf{e}_s;\quad\frac{\dx \mathbf{e}_y}{\dx s} = 0
+ \end{align*}
+ Erzeugende der kanonischen Transformation:
+ \begin{align*}
+  F = F_3(\mathbf{p},\mathbf{Q}) + \mathbf{q}\cdot\mathbf{p}, \qquad F_3 = -\mathbf{r}(s)\cdot\mathbf{p}
+ \end{align*}
+ Neue Impulse $(P_x, P_y,P_s)$:
+ \begin{align*}
+  P_x &= \mathbf{p}\cdot\mathbf{e}_x; \hspace{1.45cm} P_y = \mathbf{p}\cdot\mathbf{e}_y;\\
+  P_s &= \left(\rho\frac{1}{\rho}\mathbf{e}_s+x\frac{1}{\rho}\mathbf{e}_s\right)\mathbf{p} = \left(1+\frac{x}{\rho}\right)\mathbf{p}\mathbf{e}_s
+ \end{align*}
+
+
+
+\end{frame}
+
+
+\subsection{Beispiele}
+\begin{frame}
+\frametitle{senkrechte Magnetfelder}
+ \pause
+ \begin{itemize}
+  \visible<2->{\item Enthält dynamische Informationen (Wechselwirkungen)}
+  \visible<3->{\item Beschreibt Übergang ähnlich Streuung von Startzustand $i$ zu Endzustand $f$}
+  \visible<4->{\item Betragsquadrat $|M|^2$ kann als Wahrscheinlichkeit für Reaktion betrachtet werden}
+ \end{itemize}
+  \visible<5->{Ein erster Ausdruck:
+  \begin{align*}
+   M = \langle Kl\nu\,|\mathcal{H}|\,D\rangle
+  \end{align*}}
+\end{frame}
+
+\begin{frame}
+ \frametitle{kleine Winkel zur Sollbahn}
+\end{frame}
+
+\begin{frame}
+ \frametitle{kleine Impulsabweichungen zum Sollimpuls}
+\end{frame}
+
+\section{Transformation auf Wirkungs-Winkel-Variable}
+\subsection{Bedeutng der Wirkungs-Winkel-Variablen}
+\begin{frame}
+ \frametitle{Bedeutende Größen}
+\end{frame}
+
+\subsection{Beispiele}
+\begin{frame}
+ \frametitle{Beispiel: Gradientenfehler}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Beispiel: Sextupol}
+\end{frame}
+
+\section{Resonanzen}
+\begin{frame}
+ \frametitle{Beispiel: Sextupol}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Verhalten in Resonanznähe}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Fixpunkte}
+\end{frame}
+
+\section{Ausblick}
+\begin{frame}
+ \frametitle{Oktupol}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Kopplung}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Gegenwart vieler Nichtlinearitäten}
+\end{frame}
+
+
+
+
+\end{document}
+=======
+
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+% Die Hyperref Option hyperref={pdfpagelabels=false} verhindert die Warnung:
+% Package hyperref Warning: Option `pdfpagelabels' is turned off
+% (hyperref)                because \thepage is undefined. 
+% Hyperref stopped early 
+%
+% \input{longheader.tex}
+% \input{global.tex}
+
+\usepackage{lmodern}
+% Das Paket lmodern erspart die folgenden Warnungen:
+% LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
+% (Font)              size <5> substituted on input line 22.
+% LaTeX Font Warning: Size substitutions with differences
+% (Font)              up to 1.0pt have occurred.
+%
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\usepackage{siunitx}
+\sisetup{load-configurations=abbreviations}
+\sisetup{
+	%locale=DE,
+	seperr=true,                    % Fehler anzeigen
+	tightpm,                        % Abstand zwischen Fehler verringern
+	tophrase={{\text{ bis }}},
+	fraction=nice,
+	per-mode=fraction,
+	free-standing-units=true,
+	space-before-unit=true,
+	use-xspace=true,
+	group-separator={{\text{~}}},
+	list-final-separator={{\text{ und }}}
+}
+\usepackage{natbib}
+\usepackage[labelformat=empty]{caption}
+\usepackage{movie15}
+\usepackage{xcolor,colortbl}
+\usepackage{slashed}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage[ngerman,german]{babel, varioref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xfrac}
+\usepackage{booktabs}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Wenn \titel{\ldots} \author{\ldots} erst nach \begin{document} kommen,
+% kommt folgende Warnung:
+% Package hyperref Warning: Option `pdfauthor' has already been used,
+% (hyperref) ... 
+% Daher steht es hier vor \begin{document}
+
+\title[Hamiltonformalismus]{Hamiltonformalismus in der Beschleunigerphysik}  
+\institute{Beschleunigerphysik I \& II\\
+Technische Universit\"at Dortmund}
+\author{Dimitrios Skodras \and Sonja Bartkowski} 
+\date{11.06.2015} 
+
+% zusaetzlich ist das usepackage{beamerthemeshadow} eingebunden 
+\usepackage{beamerthemeshadow}
+\usepackage{amsmath}
+
+
+%  \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+%  sorgt dafuer das die Elemente die erst noch (zukuenftig) kommen 
+%  nur schwach angedeutet erscheinen 
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% klappt auch bei Tabellen, wenn teTeX verwendet wird\ldots
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+ \begin{beamercolorbox}%
+    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]%
+    {author in head/foot}%
+    \usebeamerfont{author in head/foot}%
+    \hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}%
+    [wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm ,rightskip=.3cm]%
+    {title in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \insertshorttitle\hfill\insertframenumber{}
+  \end{beamercolorbox}%
+}%
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\captionsetup[figure]{font=small,skip=0pt}
+\begin{frame}
+\titlepage
+\end{frame} 
+
+\begin{frame}
+\frametitle{Gliederung}
+\tableofcontents
+\end{frame} 
+
+
+\section{Grundlagen}
+ \begin{frame}
+   \frametitle{Sonjas Teil}
+   \pause
+ \end{frame}
+ 
+
+\section{Hamilton-Funktion für geladenen Teilchen im EM-Feld}
+\begin{frame}
+\frametitle{Dimitris Teil}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{Gibt es hier Unterkapitel}
+ 
+
+\section{Transformation auf Wirkungs-Winkel-Variable}
+\begin{frame}
+\frametitle{Sonjas Teil}
+\tableofcontents[currentsection]
+\end{frame}
+
+\section{Kanonische Störungsrechnung}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{Sextupol}
+\begin{frame}
+\frametitle{Sextupol - Sonjas Teil}
+\end{frame}
+\subsection*{Rest - Dimitris Teil?}
+\begin{frame}
+\frametitle{Rest - Dimitris Teil?}
+ \framesubtitle{Motivation}
+\end{frame}
+\end{document}
+>>>>>>> fb1dc7e1283ceaffe2a0f14f4c81cdfe63ef3826
