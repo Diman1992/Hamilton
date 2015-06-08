@@ -335,17 +335,82 @@ bild malen
 
 \subsection{Beispiele}
 \begin{frame}
-\frametitle{senkrechte Magnetfelder}
+\frametitle{Zur Sollbahn senkrechte Magnetfelder}
  \pause
+ Bedingung:
+ \begin{align*}
+  \tilde {A}_x = \tilde{A}_y = 0
+ \end{align*}
+ Hamiltonfunktion:
+ \begin{align*}
+  H_s = -e\tilde{A}_s-\left(1+\frac{x}{\rho}\right)p_\text{mech}\sqrt{1-\left(\frac{P_x}{p_\text{mech}}\right)^2 -\left(\frac{P_y}{p_\text{mech}}\right)^2}
+ \end{align*}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Kleine Winkel zur Sollbahn}
+ Bedingung:
+ \begin{align*}
+  P_x, P_y \ll p_\text{mech} 
+ \end{align*}
+ Hamiltonfunktion:
+ \begin{align*}
+  H_s \approx -e\tilde{A}_s-\left(1+\frac{x}{\rho}\right)\cdot\left(p_\text{mech} - \frac{P_x}{2p_\text{mech}} - \frac{P_y}{2p_\text{mech}}\right)
+ \end{align*}
+
 
 \end{frame}
 
 \begin{frame}
- \frametitle{kleine Winkel zur Sollbahn}
+ \frametitle{Vertikales Ablenkfeld $B_0$, Quadrupolmagnet zur Fokussierung}
+ \pause
+ Bedingung:
+ \begin{align*}
+ B_y  = B_0 -gx; \qquad g = -\frac{\partial B_y}{\partial x}
+ \end{align*}
+ Zugehöriges Vektorpotential:
+ \begin{align*}
+  A'_s \cong -B_0 x + g\left(\frac{x^2}{2} - \frac{y^2}{2}\right) + \frac{B_0}{\rho}\frac{x^2}{2} + \mathcal{O}(x^3,y^3)
+ \end{align*}
+ Hamiltonfunktion:
+ \begin{align*}
+  H_s \approx -e\tilde{A}'_s-\left(1+\frac{x}{\rho}\right)\cdot\left(p_\text{mech} - \frac{P_x}{2p_\text{mech}} - \frac{P_y}{2p_\text{mech}}\right)
+ \end{align*}
+
 \end{frame}
+
 
 \begin{frame}
  \frametitle{kleine Impulsabweichungen zum Sollimpuls}
+ \pause
+ Bedingung:
+ \begin{align*}
+  p_\text{mech} = p_0 + \Delta p; \qquad p_0 = e\rho B
+ \end{align*}
+Hamiltonfunktion ($k = eg/p_0$):
+\begin{align*}
+ H_s \approx& \left(1+\frac{x}{\rho}\right)\left[-eA'_s-p_0-\Delta p + \left(\frac{P_x}{2p_0} + \frac{P_y}{2p_0}\right)\cdot \left(1-\frac{\Delta p}{p_0}\right)\right]\\
+ \approx&  + p_0\left[\left(\frac{1}{\rho^2}-k\right)\frac{x^2}{2} + k\frac{y^2}{2}\right] +\frac{P_x}{2p_0} + \frac{P_y}{2p_0}-\Delta p\frac{x}{\rho}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Normierung auf Sollimpuls}
+ \pause
+mit ($\bar{P}_\alpha = P_\alpha/p_0$):
+\begin{align*}
+ H_0 = \frac{H_s}{p_0} = \left(\frac{1}{\rho^2}-k\right)\frac{x^2}{2} + k\frac{y^2}{2} + \frac12(\bar{P}_x^2 + \bar{P}_x^2) - \frac{x}{\rho}\frac{\Delta p}{p_0}
+\end{align*}
+Hamiltongleichungen:
+\begin{align*}
+ x' = \,\frac{\partial H}{\partial \bar{P}_x} &= \bar{P}_x\hspace{4.75cm}  y' = \frac{\partial H}{\partial \bar{P}_y} = \bar{P}_y\\
+ \bar{P}_x' = -\frac{\partial H}{\partial x} &= -\left(\frac{1}{\rho^2}-k\right)x +\frac{1}{\rho}\frac{\Delta p}{p_0} \hspace{1.4cm} \bar{P}_y' = -\frac{\partial H}{\partial y} = -ky
+\end{align*}
+
+ 
+
+ 
 \end{frame}
 
 
@@ -559,23 +624,103 @@ Drittelresonanz verschwindet für Sextupole gleicher Stärke und entgegengesetzt
 
 \begin{frame}
  \frametitle{Verhalten in Resonanznähe}
+ \pause
+ Betrachte Nähe von Drittelresonanz ($Q = n/3 + \delta Q$):
+ \begin{align*}
+  n\theta - 3\tilde{\phi} = n \theta - 3(Q+\delta Q)\theta -3 \phi_0 = -3(\delta Q) \theta -3\phi_0
+ \end{align*}
+ geringe Änderung pro Umlauf, jedoch weiterhin schnelle Oszillation von $H_{WW}$ mit $\tilde {\phi}$. \\
+ $\rightarrow$ Trafo auf langsame Winkelvariable:
+ \begin{align*}
+ F_2(\tilde{\phi},\tilde{J},s) = \left(\tilde{\phi} - \frac{ns}{3R}\right)\cdot \tilde{J}\\ 
+ J=\tilde{J},\qquad \phi_\text{rot} = \tilde{\phi} - \frac{n}{3}\theta 
+ \end{align*}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Verhalten in Resonanznähe}
+ \pause
+ \begin{align*}
+  H_{WW}^\text{rot} =& H_{WW} + \frac{\partial F_2}{\partial s} = \frac{Q}{R}J -\frac{n}{3R}J + \frac{(2J)^{3/2}}{24R}\\
+  &\,\times \sum\limits_{n=0}^\infty C \cos(n\theta - 3\tilde{\phi}) + D \sin((n\theta - 3\tilde{\phi})\\
+  =& \frac{\delta Q}{R}J + \frac{(2J)^{3/2}}{24R}(C\cos(3\phi_\text{rot}) - D\sin(3\phi_\text{rot}))\\
+  =& \frac{\delta Q}{R}J + \frac{(2J)^{3/2}}{24R}\sqrt{C^2+D^2}\cos\left(3\phi_\text{rot}+\text{atan}\left(\frac{D}{C}\right)\right)\\
+  \sim& AJ + BJ^{3/2}\cos(3\phi)
+ \end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Verhalten in Resonanznähe}
+\begin{figure}[H]
+ \includegraphics[width=1\textwidth]{../pics/Hstabil.jpg}
+\end{figure} 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Verhalten in Resonanznähe}
+ \pause
+ In stabilem Bereich gibt es für kleine $H_{WW}^\text{rot}$ immer ein passendes $J$, unabhängig von $\phi$. Dies gilt bis:
+ \begin{align*}
+  (J_\text{stabil},\,H_{WW}^\text{stabil}) = \left(32\left(\frac{\delta Q}{\sqrt{C^2+D^2}}\right)^2,\, \frac{32}{3R}\frac{(\delta Q)^3}{C^2+D^2}\right)
+ \end{align*}
+
 \end{frame}
 
 \begin{frame}
  \frametitle{Fixpunkte}
+ \pause
+ Fixpunkte ändern sich nicht mit $s$:
+ \begin{align*}
+  \frac{\partial H_{WW}^\text{rot}}{\partial J} &= A + \frac32 BJ^{1/2}\cos(3\phi_\text{rot} + \phi_0) = 0\\
+  -\frac{\partial H_{WW}^\text{rot}}{\partial \phi_\text{rot}} &= \sin(3\phi_\text{rot} + \phi_0) = 0\\
+  &\rightarrow \phi_\text{rot} = -\frac{\phi_0}{3}+\left(0,\frac{\pi}{3}, \frac{2\pi}{3}, \pi, \frac{4\pi}{3}, \frac{5\pi}{3}\right)\\
+  &\rightarrow \cos(3\phi_\text{rot} + \phi_0) = \pm 1 \quad(\text{abh. A,B-VZ})
+ \end{align*}
+ 
+
 \end{frame}
 
 \section{Ausblick}
 \begin{frame}
  \frametitle{Oktupol}
+ \pause
+ Hamiltonfunktion mit Oktupolpotenzial $A_s = C(2J\beta)^2 \cos(\phi)^4$:
+ \begin{align*}
+  H_{WW} = \frac{J}{\beta}+ \frac{C}{2}\beta^2J^2(\cos(4\phi)+4\cos(2\phi)+3)
+ \end{align*}
+ Betatronphasenvorschub:
+ \begin{align*}
+  \frac{\partial H_{WW}}{\partial J }= \frac{1}{\beta} + C \beta^2J(\underbrace{\cos(4\phi)}_{\text{Res 4.Ord}}+4\cos(2\phi)+\underbrace{3}_{\text{Tune shift}})
+ \end{align*}
+Die Hälfte der Fixpunkte des Oktupols sind instabil, zeichnen sich also durch Bifurkation der Trajektorie aus.
+ 
 \end{frame}
+
 
 \begin{frame}
  \frametitle{Kopplung}
+ \pause
+ \begin{itemize}
+  \item Bisher $y=0$
+  \item $c\cdot y^n$ im Vektorpotential sind analog zu horizontalen Komponente 
+  \item $x^n\cdot y^m$ führen zu Kopplung
+  \item[$\rightarrow$] mehrdimensionale Beschreibung notwendig (Erhaltungssätze gelten oft bis 4 Dimensionen)
+ \end{itemize}
+
 \end{frame}
 
 \begin{frame}
  \frametitle{Gegenwart vieler Nichtlinearitäten}
+ \begin{itemize}
+  \item Bei Nichtlinearitäten mit $x^n\cdot y^m$ alle $Q_x/Q_y$ resonant mit $nQ_x + mQ_y = p$
+  \item Resonanzen bis 10. Ordnung bei $p$-Ringen, 4. Ordnung bei $e^-$-Ringen
+  \item isolierte Resonanzen sind deterministisch
+  \item Chirikov-Kriterium für chaotisches Verhalten vieler Resonanzen
+ \end{itemize}
+
+ 
 \end{frame}
 
 
