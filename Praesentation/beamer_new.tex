@@ -186,7 +186,7 @@ Folgende Erzeugende sind besonders einfach:\\
 Erzeugende $F$ & Transformation \\ 
 \hline 
 $F_1(q,Q,t)$ & $p = \frac{\partial F_1}{\partial_q}$, $P = - \frac{\partial F_1}{\partial Q}$, $\mathcal{H} = H + \frac{\partial F_1}{\partial t}$ \\ 
-$F_2(q,P,t)-QP$ & $p = \frac{\partial F_2}{\partial q}$, $Q = \frac{\partial F_2}{\partial P}$, $\mathcal{H} = H + \frac{\partial F_2}{\partial t}$ \\ 
+$F_2(q,P,t)-QP$ & $p = \frac{\partial F_2}{\partial q}$, $Q = \frac{\partial F_2}{\partial P}$, $\mathcal{H} = H - \frac{\partial F_2}{\partial t}$ \\ 
 $F_3(p,Q,t)+qp$ & $q = - \frac{\partial F_3}{\partial p}$, $P = - \frac{\partial F_3}{\partial Q}$, $\mathcal{H} = H + \frac{\partial F_3}{\partial t}$ \\ 
 $F_4(p,P,t)+pq-PQ$ & $q = -\frac{\partial F_4}{\partial p}$, $Q = - \frac{\partial F_4}{\partial P}$, $\mathcal{H} = H + \frac{\partial F_4}{\partial t}$ 
 \end{tabular} 
@@ -439,7 +439,7 @@ Trafo $x,p_x\rightarrow \phi,J$:
 F_1(x,\phi,s) = -\frac{x^2}{2\beta(s)}\left[ \tan \phi - \frac{1}{2}\beta^\prime(s)\right]
 \end{equation*}\pause
 \begin{gather*}\Rightarrow p_x = x^\prime = \frac{\partial F_1}{\partial x} = -\frac{x}{\beta}\left[\tan \phi - \frac{\beta^\prime}{2}\right]\\
-J = - \frac{\partial F_1}{\partial \phi} = \frac{x^2}{2\beta\cos^2\psi}
+J = - \frac{\partial F_1}{\partial \phi} = \frac{x^2}{2\beta\cos^2\phi}
 \end{gather*}
 \end{frame}
 
@@ -465,7 +465,7 @@ Erinnerung: Zerlegung des Magnetfeldes
 \pause
 
 \vspace*{.6cm}
-Habe nun das Quadrupolfeld einen Fehler $\Delta k$:
+Habe nun das einen Fehler $\Delta k$ in Quadrupolform:
 \begin{equation*}
 H_{WW}(\phi,J,s) = \frac{J}{\beta(s)} - \frac{1}{2}\Delta k(s) x^2
 \end{equation*}
@@ -486,6 +486,7 @@ mit $\frac{d\phi}{ds} = \frac{\partial H_{WW}}{\partial J} = \frac{1}{\beta} - \
 Q = \underbrace{\frac{1}{2}\oint \frac{ds}{\beta(s)}}_{Q_0} - \frac{1}{4}\oint \beta(s) \Delta k ds - \underbrace{\frac{1}{4\pi}\oint\beta(s) \Delta k(s) \cos 2\phi ds}_{ = 0\text{, falls } Q_0 \neq \frac{n}{2}}
 \end{equation*}
 \end{frame}
+
 
 
 
@@ -512,6 +513,9 @@ für $Q_0 \neq \pm n,\pm \frac{n}{3}$.
 \item kein Tune Shift durch Sextupol
 \end{itemize}
 \end{frame}
+
+
+
 
 \section{Resonanzen}
 \subsection{Sextupol}
@@ -616,9 +620,6 @@ C = \frac{1}{2\pi R} \int\limits_0^{2\pi R} \beta^{3/2} m \cos3\phi(s) ds,\quad 
 Große Resonanzen für gleichartige Sextupole im Abstand $120^\circ$.\\\pause
 Drittelresonanz verschwindet für Sextupole gleicher Stärke und entgegengesetzter Polarität in Abstand von $60^\circ$.
 \end{frame}
-
-
-
 
 
 
